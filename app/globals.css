@@ -1,0 +1,194 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* dark 主題以 data-theme 驅動（非 shadcn 預設的 .dark class） */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ============ Primitives + Scale（來自 docs/design-tokens.md）============ */
+:root {
+  --red-50:#fcebec; --red-100:#f7c9cd; --red-300:#e8737c;
+  --red-500:#c4333f; --red-700:#8a1e2d; --red-900:#4e121a;
+  --sky-50:#e6f7fe; --sky-300:#7fdbff; --sky-500:#4fd1ff;
+  --sky-700:#1e7fa8; --sky-900:#0e3b50;
+  --gold-300:#ffd98a; --gold-500:#e3a51f; --gold-700:#a8760f;
+  --green-300:#9bd98a; --green-500:#4a9e5c; --green-700:#2e6b3c;
+  --neutral-0:#ffffff; --neutral-50:#faf6ed; --neutral-100:#f1ece0;
+  --neutral-200:#e1dac9; --neutral-400:#a8a190; --neutral-600:#6b6555;
+  --neutral-800:#2c2a24; --neutral-900:#1a1918;
+  --navy-700:#16233c; --navy-800:#0e1626; --navy-900:#0e1626; --navy-950:#070b14;
+
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px;
+  --space-12:48px; --space-16:64px;
+  --radius-sm:8px; --radius-md:12px; --radius-lg:18px; --radius-xl:24px; --radius-pill:999px;
+
+  /* shadcn 元件的 radius 基準 */
+  --radius: var(--radius-md);
+
+  /* effect styles */
+  --elevation-1: 0 2px 8px rgba(26,25,24,.08);
+  --elevation-2: 0 6px 18px rgba(26,25,24,.12);
+  --elevation-3: 0 14px 40px rgba(26,25,24,.18);
+}
+
+/* ============ Semantic: Light（含 shadcn 對接）============ */
+:root, [data-theme="light"] {
+  --bg-canvas:var(--neutral-50);
+  --bg-surface:var(--neutral-0);
+  --bg-surface-raised:var(--neutral-0);
+  --bg-inverse:var(--navy-900);
+  --text-primary:var(--neutral-900);
+  --text-secondary:var(--neutral-600);
+  --text-on-brand:var(--neutral-0);
+  --text-on-accent:var(--navy-900);
+  --border-subtle:var(--neutral-200);
+  --border-strong:var(--neutral-400);
+  --brand-primary:var(--red-500);
+  --brand-primary-hover:var(--red-700);
+  --brand-accent:var(--sky-500);
+  --brand-accent-text:var(--sky-700);
+  --status-success:var(--green-500);
+  --status-warning:var(--gold-500);
+  --status-danger:var(--red-500);
+  --level-low:var(--green-500);   /* 🍃 低階小聯盟 */
+  --level-mid:var(--gold-500);    /* 🌷 AA/AAA */
+  --level-mlb:var(--red-500);     /* 🌼 大聯盟 */
+  --viz-cat-1:#c4333f; --viz-cat-2:#1e7fa8; --viz-cat-3:#e3a51f;
+  --viz-cat-4:#4a9e5c; --viz-cat-5:#7a5cc4; --viz-cat-6:#d97706;
+  --viz-seq-1:#fcebec; --viz-seq-2:#f3b0b6; --viz-seq-3:#e8737c;
+  --viz-seq-4:#c4333f; --viz-seq-5:#8a1e2d;
+  --viz-grid:#e1dac9; --viz-axis:#6b6555;
+
+  /* shadcn semantic → 指向我們的 token */
+  --background: var(--bg-canvas);
+  --foreground: var(--text-primary);
+  --card: var(--bg-surface);
+  --card-foreground: var(--text-primary);
+  --popover: var(--bg-surface-raised);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--brand-primary);
+  --primary-foreground: var(--text-on-brand);
+  --secondary: var(--bg-surface);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--neutral-100);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--brand-accent);
+  --accent-foreground: var(--text-on-accent);
+  --destructive: var(--status-danger);
+  --border: var(--border-subtle);
+  --input: var(--border-subtle);
+  --ring: var(--brand-accent);
+}
+
+/* ============ Semantic: Dark ============ */
+[data-theme="dark"] {
+  --bg-canvas:var(--navy-900);
+  --bg-surface:var(--navy-900);
+  --bg-surface-raised:var(--navy-700);
+  --bg-inverse:var(--neutral-0);
+  --text-primary:var(--neutral-0);
+  --text-secondary:var(--neutral-400);
+  --text-on-brand:var(--neutral-0);
+  --text-on-accent:var(--navy-900);
+  --border-subtle:var(--navy-700);
+  --border-strong:var(--neutral-600);
+  --brand-primary:var(--red-500);
+  --brand-primary-hover:var(--red-300);
+  --brand-accent:var(--sky-500);
+  --brand-accent-text:var(--sky-500);
+  --status-success:var(--green-300);
+  --status-warning:var(--gold-300);
+  --status-danger:var(--red-300);
+  --level-low:var(--green-300);
+  --level-mid:var(--gold-300);
+  --level-mlb:var(--red-300);
+  --viz-cat-1:#e8737c; --viz-cat-2:#4fd1ff; --viz-cat-3:#ffd98a;
+  --viz-cat-4:#9bd98a; --viz-cat-5:#b49be8; --viz-cat-6:#fbbf77;
+  --viz-seq-1:#2a1418; --viz-seq-2:#5e202a; --viz-seq-3:#8a1e2d;
+  --viz-seq-4:#c4333f; --viz-seq-5:#e8737c;
+  --viz-grid:#22314f; --viz-axis:#7a8296;
+
+  --background: var(--bg-canvas);
+  --foreground: var(--text-primary);
+  --card: var(--bg-surface-raised);
+  --card-foreground: var(--text-primary);
+  --popover: var(--bg-surface-raised);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--brand-primary);
+  --primary-foreground: var(--text-on-brand);
+  --secondary: var(--bg-surface-raised);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--navy-700);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--brand-accent);
+  --accent-foreground: var(--text-on-accent);
+  --destructive: var(--status-danger);
+  --border: var(--border-subtle);
+  --input: var(--border-subtle);
+  --ring: var(--brand-accent);
+}
+
+/* ============ Tailwind v4 @theme（產生 utility）============ */
+@theme inline {
+  /* fonts（next/font 注入 --font-noto / --font-inter）*/
+  --font-sans: var(--font-noto), system-ui, sans-serif;
+  --font-num: var(--font-inter), system-ui, sans-serif;
+
+  /* 我們的語意色 → bg-canvas / text-brand / bg-brand-hover ... */
+  --color-canvas: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-surface-raised: var(--bg-surface-raised);
+  --color-brand: var(--brand-primary);
+  --color-brand-hover: var(--brand-primary-hover);
+  --color-on-brand: var(--text-on-brand);
+  --color-on-accent: var(--text-on-accent);
+  --color-accent-text: var(--brand-accent-text);
+  --color-text: var(--text-primary);
+  --color-text-muted: var(--text-secondary);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-success: var(--status-success);
+  --color-warning: var(--status-warning);
+  --color-danger: var(--status-danger);
+  --color-level-low: var(--level-low);
+  --color-level-mid: var(--level-mid);
+  --color-level-mlb: var(--level-mlb);
+
+  /* shadcn semantic utility（供 ui 元件）*/
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    background: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+  }
+}
