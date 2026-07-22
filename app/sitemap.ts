@@ -1,14 +1,22 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
+import { allSlugs } from "@/lib/players";
 
-/** 靜態路由 sitemap（M1）。M4 之後再加入每位選手 URL。 */
+/** 路由 sitemap。主地圖在首頁 `/`；含每位選手頁。 */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/map", "/players", "/media", "/about"];
   const lastModified = new Date();
-  return routes.map((path) => ({
+  const routes = ["", "/players", "/media", "/about"];
+  const staticEntries = routes.map((path) => ({
     url: `${SITE.url}${path}`,
     lastModified,
-    changeFrequency: "weekly",
+    changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : 0.7,
   }));
+  const playerEntries = allSlugs().map((slug) => ({
+    url: `${SITE.url}/players/${slug}`,
+    lastModified,
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+  return [...staticEntries, ...playerEntries];
 }

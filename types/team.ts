@@ -7,6 +7,8 @@ export type Team = {
   city: string;
   latLng: [number, number]; // [lng, lat]
   level: "MLB";
+  /** MLB Stats API 數字 id（供賽程 join） */
+  mlbamId: number;
   /** 主場在加拿大（geoAlbersUsa 無法投影，需 fallback 近似定位） */
   outsideUs?: boolean;
 };

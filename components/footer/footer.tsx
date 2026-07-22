@@ -5,7 +5,7 @@ import { NewsletterForm } from "@/components/footer/newsletter-form";
 import { SITE } from "@/lib/site";
 
 const SITEMAP_LINKS = [
-  { href: "/map", label: "地圖" },
+  { href: "/", label: "地圖" },
   { href: "/players", label: "選手" },
   { href: "/media", label: "媒體牆" },
   { href: "/about", label: "關於" },

@@ -1,0 +1,57 @@
+{
+  "date": "2026-07-21",
+  "fetchedAt": "2026-07-21T18:00:00.000Z",
+  "games": [
+    {
+      "game": {
+        "gamePk": 824652,
+        "gameDateUtc": "2026-07-22T00:05:00Z",
+        "status": "In Progress",
+        "homeMlbId": 112,
+        "awayMlbId": 116,
+        "homeName": "芝加哥小熊",
+        "awayName": "底特律老虎",
+        "venue": "Wrigley Field",
+        "venueLat": 41.948171,
+        "venueLng": -87.655503
+      },
+      "playerName": "李灝宇",
+      "teamId": "tigers",
+      "isHome": false
+    },
+    {
+      "game": {
+        "gamePk": 824165,
+        "gameDateUtc": "2026-07-22T00:10:00Z",
+        "status": "In Progress",
+        "homeMlbId": 117,
+        "awayMlbId": 146,
+        "homeName": "休士頓太空人",
+        "awayName": "邁阿密馬林魚",
+        "venue": "Daikin Park",
+        "venueLat": 29.756967,
+        "venueLng": -95.355509
+      },
+      "playerName": "鄧愷威",
+      "teamId": "astros",
+      "isHome": true
+    },
+    {
+      "game": {
+        "gamePk": 824735,
+        "gameDateUtc": "2026-07-21T23:10:00Z",
+        "status": "Postponed",
+        "homeMlbId": 111,
+        "awayMlbId": 110,
+        "homeName": "波士頓紅襪",
+        "awayName": "巴爾的摩金鶯",
+        "venue": "Fenway Park",
+        "venueLat": 42.346456,
+        "venueLng": -71.097441
+      },
+      "playerName": "鄭宗哲",
+      "teamId": "red-sox",
+      "isHome": true
+    }
+  ]
+}

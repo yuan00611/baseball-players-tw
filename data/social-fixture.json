@@ -1,0 +1,285 @@
+[
+  {
+    "id": "youtube-sample-1",
+    "platform": "youtube",
+    "title": "【精華】鄧愷威主場先發 6 局失 1 分（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.youtube.com/@MLBTWNet",
+    "publishedAt": "2026-07-21T10:00:00Z",
+    "playerSlugs": [
+      "kai-wei-teng"
+    ],
+    "stats": {
+      "views": 15200
+    }
+  },
+  {
+    "id": "instagram-sample-2",
+    "platform": "instagram",
+    "title": "鄭宗哲賽前打擊練習側拍 📸（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.instagram.com/mlbtwnet",
+    "publishedAt": "2026-07-21T04:30:00Z",
+    "playerSlugs": [
+      "tsung-che-cheng"
+    ],
+    "stats": {
+      "likes": 832
+    }
+  },
+  {
+    "id": "threads-sample-3",
+    "platform": "threads",
+    "title": "李灝宇今日先發二壘，台灣時間早上開打！（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.threads.net/@mlbtwnet",
+    "publishedAt": "2026-07-21T02:15:00Z",
+    "playerSlugs": [
+      "hao-yu-lee"
+    ],
+    "stats": {
+      "likes": 210
+    }
+  },
+  {
+    "id": "facebook-sample-4",
+    "platform": "facebook",
+    "title": "本週旅美精華整理：三位大聯盟台將出賽（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.facebook.com/mlbtwnet",
+    "publishedAt": "2026-07-20T12:00:00Z",
+    "playerSlugs": [
+      "kai-wei-teng",
+      "tsung-che-cheng",
+      "hao-yu-lee"
+    ],
+    "stats": {
+      "likes": 540
+    }
+  },
+  {
+    "id": "youtube-sample-5",
+    "platform": "youtube",
+    "title": "【專訪】林昱珉暢談 3A 一年的成長（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.youtube.com/@MLBTWNet",
+    "publishedAt": "2026-07-20T09:00:00Z",
+    "playerSlugs": [
+      "yu-min-lin"
+    ],
+    "stats": {
+      "views": 9800
+    }
+  },
+  {
+    "id": "instagram-sample-6",
+    "platform": "instagram",
+    "title": "莊陳仲敖登板英姿 🔥（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.instagram.com/mlbtwnet",
+    "publishedAt": "2026-07-19T16:20:00Z",
+    "playerSlugs": [
+      "chen-zhong-ao-zhuang"
+    ],
+    "stats": {
+      "likes": 645
+    }
+  },
+  {
+    "id": "threads-sample-7",
+    "platform": "threads",
+    "title": "林維恩三振畫面來了（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.threads.net/@mlbtwnet",
+    "publishedAt": "2026-07-19T08:00:00Z",
+    "playerSlugs": [
+      "wei-en-lin"
+    ],
+    "stats": {
+      "likes": 158
+    }
+  },
+  {
+    "id": "youtube-sample-8",
+    "platform": "youtube",
+    "title": "【每日一投】陳柏毓 2A 好球帶邊角控球（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.youtube.com/@MLBTWNet",
+    "publishedAt": "2026-07-18T11:30:00Z",
+    "playerSlugs": [
+      "po-yu-chen"
+    ],
+    "stats": {
+      "views": 4300
+    }
+  },
+  {
+    "id": "facebook-sample-9",
+    "platform": "facebook",
+    "title": "潘文輝花蓮子弟兵在 2A 穩定出賽（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.facebook.com/mlbtwnet",
+    "publishedAt": "2026-07-18T05:00:00Z",
+    "playerSlugs": [
+      "wen-hui-pan"
+    ],
+    "stats": {
+      "likes": 388
+    }
+  },
+  {
+    "id": "instagram-sample-10",
+    "platform": "instagram",
+    "title": "林振瑋春田紅雀日常 🧢（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.instagram.com/mlbtwnet",
+    "publishedAt": "2026-07-17T18:45:00Z",
+    "playerSlugs": [
+      "chen-wei-lin"
+    ],
+    "stats": {
+      "likes": 274
+    }
+  },
+  {
+    "id": "threads-sample-11",
+    "platform": "threads",
+    "title": "張弘稜 A+ 升遷路上，狀態火燙（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.threads.net/@mlbtwnet",
+    "publishedAt": "2026-07-17T07:10:00Z",
+    "playerSlugs": [
+      "hung-leng-chang"
+    ],
+    "stats": {
+      "likes": 96
+    }
+  },
+  {
+    "id": "youtube-sample-12",
+    "platform": "youtube",
+    "title": "【新人聯盟巡禮】亞利桑那複合球場的一天（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.youtube.com/@MLBTWNet",
+    "publishedAt": "2026-07-16T10:00:00Z",
+    "playerSlugs": [
+      "nien-hsi-yang",
+      "chang-tzu-chun-lin"
+    ],
+    "stats": {
+      "views": 3100
+    }
+  },
+  {
+    "id": "instagram-sample-13",
+    "platform": "instagram",
+    "title": "李晨薰聖荷西巨人主場 🌉（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.instagram.com/mlbtwnet",
+    "publishedAt": "2026-07-16T02:00:00Z",
+    "playerSlugs": [
+      "chen-hsun-lee"
+    ],
+    "stats": {
+      "likes": 189
+    }
+  },
+  {
+    "id": "facebook-sample-14",
+    "platform": "facebook",
+    "title": "本月旅美戰報：小聯盟台將成績整理（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.facebook.com/mlbtwnet",
+    "publishedAt": "2026-07-15T12:00:00Z",
+    "playerSlugs": [],
+    "stats": {
+      "likes": 712
+    }
+  },
+  {
+    "id": "youtube-sample-15",
+    "platform": "youtube",
+    "title": "【回顧】鄭宗哲大聯盟首安時刻（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.youtube.com/@MLBTWNet",
+    "publishedAt": "2026-07-15T09:00:00Z",
+    "playerSlugs": [
+      "tsung-che-cheng"
+    ],
+    "stats": {
+      "views": 25600
+    }
+  },
+  {
+    "id": "threads-sample-16",
+    "platform": "threads",
+    "title": "沈家羲南投埔里之光，1A 先發登板（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.threads.net/@mlbtwnet",
+    "publishedAt": "2026-07-14T06:30:00Z",
+    "playerSlugs": [
+      "chia-shi-shen"
+    ],
+    "stats": {
+      "likes": 120
+    }
+  },
+  {
+    "id": "instagram-sample-17",
+    "platform": "instagram",
+    "title": "黃仲翔基隆出身，維薩利亞出賽 ⚾（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.instagram.com/mlbtwnet",
+    "publishedAt": "2026-07-14T01:00:00Z",
+    "playerSlugs": [
+      "chung-hsiang-huang"
+    ],
+    "stats": {
+      "likes": 205
+    }
+  },
+  {
+    "id": "youtube-sample-18",
+    "platform": "youtube",
+    "title": "【本週 Top5】台將精彩守備集錦（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.youtube.com/@MLBTWNet",
+    "publishedAt": "2026-07-13T10:00:00Z",
+    "playerSlugs": [
+      "hao-yu-lee",
+      "tsung-che-cheng"
+    ],
+    "stats": {
+      "views": 18700
+    }
+  },
+  {
+    "id": "facebook-sample-19",
+    "platform": "facebook",
+    "title": "蘇嵐鴻加盟教士體系，展開旅美生涯（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.facebook.com/mlbtwnet",
+    "publishedAt": "2026-07-13T04:00:00Z",
+    "playerSlugs": [
+      "lan-hong-su"
+    ],
+    "stats": {
+      "likes": 466
+    }
+  },
+  {
+    "id": "threads-sample-20",
+    "platform": "threads",
+    "title": "廖宥霖、林張子俊釀酒人新人聯盟同隊（範例）",
+    "thumbnailUrl": null,
+    "permalink": "https://www.threads.net/@mlbtwnet",
+    "publishedAt": "2026-07-12T08:00:00Z",
+    "playerSlugs": [
+      "yu-lin-liao",
+      "chang-tzu-chun-lin"
+    ],
+    "stats": {
+      "likes": 88
+    }
+  }
+]
