@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Nav } from "@/components/nav/nav";
 import { Footer } from "@/components/footer/footer";
 import { SITE } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
 
 // 自架、無外部請求；display:swap 避免 FOUT/CLS
 const notoSansTC = Noto_Sans_TC({
@@ -64,6 +65,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
