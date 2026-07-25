@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { X } from "lucide-react";
 import type { MapPin } from "@/components/map/map-types";
+import { PlayerAvatar } from "@/components/player/player-avatar";
 
 /** pin 迷你卡：schedule 顯示對戰+台灣時間；homebase 顯示選手+球隊+等級。連個別球員頁。 */
 export function PinHoverCard({
@@ -41,9 +42,17 @@ export function PinHoverCard({
             </p>
           )}
           <p className="text-text-muted">台灣時間 {pin.taiwanTime}</p>
-          <p className="text-text-muted">
-            {pin.playerName} · {pin.status}
-          </p>
+          <div className="flex items-center gap-2 pt-0.5">
+            <PlayerAvatar
+              name={pin.playerName ?? ""}
+              mlbamId={pin.playerMlbamId}
+              sizePx={32}
+              fallbackTextClassName="text-sm"
+            />
+            <p className="text-text-muted">
+              {pin.playerName} · {pin.status}
+            </p>
+          </div>
           {pin.playerSlug && (
             <Link
               href={`/players/${pin.playerSlug}`}
@@ -59,9 +68,15 @@ export function PinHoverCard({
             <li key={pl.slug}>
               <Link
                 href={`/players/${pl.slug}`}
-                className="group flex items-center justify-between gap-2"
+                className="group flex items-center gap-2"
               >
-                <span className="text-text group-hover:text-accent-text">
+                <PlayerAvatar
+                  name={pl.name}
+                  mlbamId={pl.mlbamId}
+                  sizePx={32}
+                  fallbackTextClassName="text-sm"
+                />
+                <span className="flex-1 text-text group-hover:text-accent-text">
                   {pl.name}
                   <span className="text-text-muted"> · {pl.level}</span>
                 </span>

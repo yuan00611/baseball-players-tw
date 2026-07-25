@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 };
 
 const SLUG_BY_NAME = new Map(PLAYERS.map((p) => [p.name, p.slug]));
+const MLBAMID_BY_NAME = new Map(PLAYERS.map((p) => [p.name, p.mlbamId]));
 
 function homebasePins(): MapPin[] {
   return LOCATED_PIN_GROUPS.flatMap((g) => {
@@ -41,6 +42,7 @@ function homebasePins(): MapPin[] {
           slug: pl.slug,
           affiliate: pl.affiliate,
           level: pl.currentLevel,
+          mlbamId: pl.mlbamId,
         })),
         venueApprox: g.venueApprox,
       },
@@ -66,6 +68,7 @@ function schedulePins(games: Awaited<ReturnType<typeof getSchedule>>["games"]): 
         teamName: team.name,
         playerName: pg.playerName,
         playerSlug: SLUG_BY_NAME.get(pg.playerName),
+        playerMlbamId: MLBAMID_BY_NAME.get(pg.playerName),
         matchup: matchupLabel(pg.game),
         taiwanTime: toTaiwanTime(pg.game.gameDateUtc),
         status: statusLabel(pg.game.status),

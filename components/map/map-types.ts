@@ -4,12 +4,13 @@ export type MapPin = {
   y: number;
   variant: "homebase" | "schedule";
   /** homebase：同球場的選手們 */
-  players?: { name: string; slug: string; affiliate: string; level: string }[];
+  players?: { name: string; slug: string; affiliate: string; level: string; mlbamId?: number }[];
   venueApprox?: boolean;
   /** schedule：對戰資訊 */
   teamName?: string;
   playerName?: string;
   playerSlug?: string;
+  playerMlbamId?: number;
   matchup?: string;
   taiwanTime?: string;
   status?: string;

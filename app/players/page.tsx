@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { playersByLevel } from "@/lib/players";
 import { TEAM_BY_ID } from "@/data/teams";
+import { PlayerAvatar } from "@/components/player/player-avatar";
 
 export const metadata: Metadata = {
   title: "選手",
@@ -44,12 +45,13 @@ export default function PlayersPage() {
                   href={`/players/${p.slug}`}
                   className="flex items-center gap-3 rounded-lg border border-border-subtle bg-surface p-4 transition-colors hover:border-border-strong"
                 >
-                  <span
-                    aria-hidden="true"
-                    className="flex size-11 shrink-0 items-center justify-center rounded-full bg-brand font-num text-lg font-semibold text-on-brand"
-                  >
-                    {p.name.charAt(0)}
-                  </span>
+                  <PlayerAvatar
+                    name={p.name}
+                    mlbamId={p.mlbamId}
+                    sizePx={44}
+                    imgSize={240}
+                    fallbackTextClassName="text-lg"
+                  />
                   <span className="min-w-0">
                     <span className="block font-sans font-bold text-text">
                       {p.name}

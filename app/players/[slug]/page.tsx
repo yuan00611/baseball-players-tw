@@ -8,6 +8,7 @@ import { TAIWAN_PATH, TAIWAN_W, TAIWAN_H, projectHometown } from "@/lib/map/taiw
 import { Journey, type UsStop } from "@/components/player/journey";
 import { SITE } from "@/lib/site";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/social-icons";
+import { PlayerAvatar } from "@/components/player/player-avatar";
 
 export const revalidate = 600; // ISR：數據每 10 分鐘更新（接真資料後生效）
 
@@ -103,12 +104,13 @@ export default async function PlayerPage({
       <article>
         {/* Hero */}
         <header className="flex flex-col gap-5 sm:flex-row sm:items-center">
-          <span
-            aria-hidden="true"
-            className="flex size-20 shrink-0 items-center justify-center rounded-full bg-brand font-num text-3xl font-semibold text-on-brand"
-          >
-            {p.name.charAt(0)}
-          </span>
+          <PlayerAvatar
+            name={p.name}
+            mlbamId={p.mlbamId}
+            sizePx={80}
+            imgSize={240}
+            fallbackTextClassName="text-3xl"
+          />
           <div>
             <div className="flex items-center gap-3">
               <h1 className="font-sans text-3xl font-bold leading-none text-text md:text-4xl">

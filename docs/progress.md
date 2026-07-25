@@ -71,6 +71,13 @@
   2. 移除「社群動態」卡；**媒體牆連結移到左側「最新新聞」下方**。
   3. **最新新聞**改成 3 則示意新聞列（標題＋日期·來源，模板產生標「示意」）；**照片集**改成 4 個柔和色塊佔位（`PHOTO_PLACEHOLDER`）。皆待接真資料。
   4. hero h1 加 `leading-none` 讓 FB/IG icon 與名字**垂直置中**；**媒體牆連結移到右欄**（最新新聞右邊，右欄＝媒體牆連結＋照片集，標題「照片與媒體」）。
+- 2026-07-24（球員頭像上線，跨里程碑）：接**官方 MLB 頭像**（`lib/headshot.ts` → `midfield.mlbstatic.com/v1/people/{mlbamId}/spots/240`），不碰第三方站（沿用 2026-07-23 決策）。
+  1. 共用元件 `components/player/player-avatar.tsx`：有 `mlbamId` → `next/image` 圓形頭像（固定寬高防 CLS、lazy）；無 → 字母 avatar fallback。
+  2. 套用處：`/players` 列表、球員頁 hero、地圖 pin 卡（`pin-hover-card`/`pin-list`，`map-types.ts` + `app/page.tsx` 讓 pin 帶 `mlbamId`）、**地圖 pin 本身**（`us-map-view.tsx` 紅點改圓形頭像＋品牌圈邊＋多人「N」badge）。
+  3. **一律用 `spots/240`**：實測 `spots/120` 對部分球員（李灝宇等）只回通用剪影，240 才是真人照且從不 404。
+  4. **地圖頭像用 `next/image` HTML 疊層**（非 SVG `<image>`）：位置/尺寸換算成容器百分比與地圖同步縮放。實測最佳化 webp 每張 ~1.6KB（vs 直載 240 PNG 18.8KB，~12×），19 顆 pin ≈ 30KB，守住地圖 <500KB 預算。
+  5. `next.config.ts` 加 `images.remotePatterns` 允許 `midfield.mlbstatic.com/v1/people/**`。
+  6. **限制**：低階小聯盟（2A 以下，如陳柏毓/柯敬賢）官方系統只有剪影（`headshot/current` 端點直接 404）→ 顯示官方剪影，待之後人工補圖。3 位無英文名者（林珺希/何樺/林睿杰）無 mlbamId 且無法定位 → 字母 avatar、不在地圖上。
 
 ## 卡住 / 待人類確認的事項
 - (無)
@@ -79,11 +86,11 @@
 - **中/英雙語 i18n**（使用者 2026-07-22 提出）：規劃放 **M6 強化**。全站文案抽 key、語言切換（可沿用主題切換的 data-attr + localStorage 模式）、`<html lang>` 動態、`hreflang`。目前全站硬編中文。
 - 賽程本地 JSON 快取（`.data/`）在 Vercel serverless 不持久 → 上線前換真 DB/KV（`lib/schedule/store.ts` 已抽象）。
 - 地圖 pin hover 卡目前 click 開啟；之後可加桌機 hover 預覽（注意手機）。
-- **球員圖片/頭像**（使用者 2026-07-22 提出）：backlog。球員列表、pin 卡、球員頁（M4）加頭像；用 `next/image`（AVIF/WebP + lazy）。目前 `data/players.ts` 無圖片欄位、關於頁團隊卡用字母 avatar。
+- ~~**球員圖片/頭像**（使用者 2026-07-22 提出）~~：✅ 2026-07-24 完成（官方 MLB 頭像＋`next/image`，見上方決策紀錄）。剩：關於頁團隊卡仍用字母 avatar；低階小聯盟剪影待人工補圖。
 - **傷兵名單（IL）**（使用者 2026-07-22 提出）：backlog。標示球員是否在傷兵名單（MLB Stats API 有 rosterType=fullRoster/40Man 及 status；小聯盟較不完整）；可在球員列表/pin 卡/球員頁顯示傷兵狀態。
 - **現役＆回台灣球員**（使用者 2026-07-22 提出）：backlog。補上仍現役但已回台灣打球（CPBL 等）的旅美歸國球員；地圖需擴充台灣島 pin/地區切換（台灣 region 目前 disabled）。
 - **真數據接入**（使用者 2026-07-23）：backlog。已有各選手 `mlbamId`（`data/player-bios.ts`），可用 MLB Stats API `people/{id}/stats?stats=season&group=hitting/pitching` 抓真數據，走 cron→快取→ISR（同賽程模式），填球員頁數據列（目前「—」）。
-- **球員照片**（使用者 2026-07-23 加碼）：backlog。官方頭像 `https://midfield.mlbstatic.com/v1/people/{mlbamId}/spots/120`（或 securea.mlb.com head_shot）。有版權/使用條款考量，需確認可用範圍再上；用 `next/image`。**不從第三方站抓圖**。
+- ~~**球員照片**（使用者 2026-07-23 加碼）~~：✅ 2026-07-24 完成（官方頭像改用 `spots/240`＋`next/image`，見上方決策紀錄）。**低階小聯盟仍為官方剪影，待人工補圖**。
 - **退役球員資料**（使用者 2026-07-23）：backlog。歷史旅美球員（王建民、郭泓志、陳偉殷等）獨立資料集；MLB Stats API 對退役球員仍有 bio/生涯數據。
 - **剩餘 3 位出身地**（林珺希/何樺/林睿杰）：backlog。無英文名故 API 查無，需人工補英文名或 bref/MLBAM id 後再解析。
 - **選手頁社群媒體**（使用者 2026-07-24）：backlog。球員頁「社群動態」加上該選手個人的 YouTube/IG/Threads/FB 連結（`Player.socials` 目前多空）；資料需人工補或從官方/選手帳號整理。

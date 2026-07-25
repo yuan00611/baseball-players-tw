@@ -1,8 +1,11 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import type { MapPin } from "@/components/map/map-types";
 import { PinHoverCard } from "@/components/map/pin-hover-card";
+import { headshotUrl } from "@/lib/headshot";
+import { cn } from "@/lib/utils";
 
 /** 受控地圖：selected/onSelect 由外層 MapExplorer 管理，好與清單連動 */
 export function UsMapView({
@@ -51,61 +54,73 @@ export function UsMapView({
           className="fill-none stroke-border-subtle dark:stroke-border-strong"
           strokeWidth={0.6}
         />
+      </svg>
 
+      {/* 頭像 pin 疊層：用 next/image（webp/縮圖，符合傳輸預算），
+          位置/尺寸換算成容器百分比 → 與地圖同步縮放，對齊 SVG 座標。 */}
+      <div className="pointer-events-none absolute inset-0">
         {pins.map((pin, i) => {
           const count = pin.players?.length ?? 1;
           const isActive = i === selected;
+          const mlbamId =
+            pin.variant === "schedule"
+              ? pin.playerMlbamId
+              : pin.players?.[0]?.mlbamId;
+          const r = isActive ? 16 : 13;
+          const sizePct = ((2 * r) / width) * 100;
+          const title =
+            pin.variant === "schedule"
+              ? `${pin.teamName} · ${pin.matchup}`
+              : `${pin.players?.[0]?.affiliate} · ${pin.players
+                  ?.map((p) => p.name)
+                  .join("、")}`;
           return (
-            <g
+            <button
               key={i}
-              className="cursor-pointer"
+              type="button"
+              aria-label={title}
+              title={title}
               onClick={(e) => {
                 e.stopPropagation();
                 onSelect(selected === i ? null : i);
               }}
+              className={cn(
+                "pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full transition-[width] duration-150",
+                isActive ? "z-[2]" : "z-[1] hover:z-[2]",
+              )}
+              style={{
+                left: `${(pin.x / width) * 100}%`,
+                top: `${(pin.y / height) * 100}%`,
+                width: `${sizePct}%`,
+              }}
             >
-              <circle cx={pin.x} cy={pin.y} r={12} fill="transparent" />
-              {isActive && (
-                <circle
-                  cx={pin.x}
-                  cy={pin.y}
-                  r={11}
-                  className="fill-none stroke-brand"
-                  strokeWidth={1.5}
-                  opacity={0.5}
-                />
-              )}
-              <circle
-                cx={pin.x}
-                cy={pin.y}
-                r={isActive ? 7.5 : 6}
-                className="fill-brand stroke-canvas transition-all"
-                strokeWidth={isActive ? 2 : 1.5}
+              <span
+                className={cn(
+                  "relative block aspect-square w-full overflow-hidden rounded-full bg-canvas ring-brand",
+                  isActive ? "ring-[3px]" : "ring-2",
+                )}
               >
-                <title>
-                  {pin.variant === "schedule"
-                    ? `${pin.teamName} · ${pin.matchup}`
-                    : `${pin.players?.[0]?.affiliate} · ${pin.players
-                        ?.map((p) => p.name)
-                        .join("、")}`}
-                </title>
-              </circle>
+                {mlbamId ? (
+                  <Image
+                    src={headshotUrl(mlbamId, 240)}
+                    alt=""
+                    fill
+                    sizes="(max-width: 1024px) 10vw, 5vw"
+                    className="object-cover"
+                  />
+                ) : (
+                  <span className="block h-full w-full bg-brand" />
+                )}
+              </span>
               {count > 1 && (
-                <text
-                  x={pin.x}
-                  y={pin.y + 2.5}
-                  textAnchor="middle"
-                  className="pointer-events-none fill-on-brand font-num"
-                  fontSize={7}
-                  fontWeight={600}
-                >
+                <span className="absolute -right-0.5 -top-0.5 flex min-w-[1.15em] items-center justify-center rounded-full border border-canvas bg-brand px-1 font-num text-[0.62em] font-semibold leading-tight text-on-brand">
                   {count}
-                </text>
+                </span>
               )}
-            </g>
+            </button>
           );
         })}
-      </svg>
+      </div>
 
       {activePin && (
         <div

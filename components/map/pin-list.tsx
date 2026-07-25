@@ -3,6 +3,7 @@
 import * as React from "react";
 import type { MapPin } from "@/components/map/map-types";
 import { cn } from "@/lib/utils";
+import { PlayerAvatar } from "@/components/player/player-avatar";
 
 export type ExtraPlayer = { name: string; sub: string };
 
@@ -10,7 +11,7 @@ type Row = {
   pinIndex: number;
   key: string;
   pin: MapPin;
-  player?: { name: string; slug: string; affiliate: string; level: string };
+  player?: { name: string; slug: string; affiliate: string; level: string; mlbamId?: number };
 };
 
 /**
@@ -75,29 +76,45 @@ export function PinList({
             )}
           >
             {pin.variant === "schedule" ? (
-              <>
-                <div className="flex items-center justify-between gap-2">
-                  <span className="font-sans text-sm font-bold text-text">
-                    {pin.playerName}
-                  </span>
-                  <span className="text-xs text-text-muted">{pin.status}</span>
+              <div className="flex items-start gap-3">
+                <PlayerAvatar
+                  name={pin.playerName ?? ""}
+                  mlbamId={pin.playerMlbamId}
+                  sizePx={40}
+                  fallbackTextClassName="text-base"
+                />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-sans text-sm font-bold text-text">
+                      {pin.playerName}
+                    </span>
+                    <span className="text-xs text-text-muted">{pin.status}</span>
+                  </div>
+                  <p className="mt-1 text-sm text-text">{pin.matchup}</p>
+                  <p className="mt-0.5 text-xs text-text-muted">
+                    {pin.homeAway}
+                    {pin.venue ? ` · ${pin.venue}` : ""} · 台灣時間 {pin.taiwanTime}
+                  </p>
                 </div>
-                <p className="mt-1 text-sm text-text">{pin.matchup}</p>
-                <p className="mt-0.5 text-xs text-text-muted">
-                  {pin.homeAway}
-                  {pin.venue ? ` · ${pin.venue}` : ""} · 台灣時間 {pin.taiwanTime}
-                </p>
-              </>
+              </div>
             ) : (
-              <>
-                <p className="font-sans text-sm font-bold text-text">
-                  {player?.name}
-                </p>
-                <p className="mt-0.5 text-sm text-text-muted">
-                  {player?.affiliate}（{player?.level}）
-                  {pin.venueApprox && <span className="ml-1 text-xs">（近似）</span>}
-                </p>
-              </>
+              <div className="flex items-center gap-3">
+                <PlayerAvatar
+                  name={player?.name ?? ""}
+                  mlbamId={player?.mlbamId}
+                  sizePx={40}
+                  fallbackTextClassName="text-base"
+                />
+                <div className="min-w-0 flex-1">
+                  <p className="font-sans text-sm font-bold text-text">
+                    {player?.name}
+                  </p>
+                  <p className="mt-0.5 text-sm text-text-muted">
+                    {player?.affiliate}（{player?.level}）
+                    {pin.venueApprox && <span className="ml-1 text-xs">（近似）</span>}
+                  </p>
+                </div>
+              </div>
             )}
           </button>
         );
